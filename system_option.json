@@ -1,0 +1,4 @@
+[
+    {"system_name": "system_discount", "system_display": "Giảm giá", "default" : 0, "data_type":"number", "system_data_unit":"%", "system_description": "Giảm giá toàn bộ sản phẩm, nếu đã giảm giá thì mục tăng giá sẽ không có hiệu lực"},
+    {"system_name": "system_extra_cost", "system_display": "Tăng giá", "default" : 0, "data_type":"number", "system_data_unit":"%", "system_description": "Tăng giá toàn bộ sản phẩm, nếu đã giảm giá thì mục này sẽ không có hiệu lực"}
+]

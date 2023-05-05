@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title key="title"></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+    <style>
+        div:has(> input[type=number]){
+            width: 7rem;
+        }
+    </style>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include('../admin/partials/adminHeader', {menu:menu}); %>
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include('../admin/partials/topbar'); %>
+
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-4 text-gray-800">Cấu Hình</h1>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary" key="system-setting-des">Các tùy chọn
+                                        chung cho hệ thống</h6>
+                                </div>
+                                <div class="card-body" id="system_content">
+                                    <%system_setting.forEach(item=>{%>
+                                        <div class="form-group row">
+                                            <label for="<%=item.system_name%>" class="col-sm-2 col-form-label">
+                                                <%=item.system_display%>
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group mb-3">
+                                                    <input type="<%=item.data_type%>" class="form-control"
+                                                        id="<%=item.system_name%>" aria-describedby="basic-addon2"
+                                                        value="<%=item.system_value%>">
+                                                    <div class="input-group-append">
+                                                        <%if(item.system_data_unit.length> 0){%>
+                                                            <span class="input-group-text"
+                                                                id="basic-addon2"><%=item.system_data_unit%></span>
+                                                            <%}%>
+                                                    </div>
+                                                </div>
+
+                                                <small id="emailHelp" class="form-text text-muted">
+                                                    <%=item.system_description%>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <%})%>
+                                            <div class="form-group row">
+                                                <label id="spanSuccessAlert"
+                                                    class="bg-success col-md-4 border rounded text-light"
+                                                    style="display: none;">Sửa thành công</label>
+                                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="btnSave" class="btn btn-primary">Save</button>
+
+                                </div>
+                            </div>
+                            <!-- /.container-fluid -->
+
+                        </div>
+                        <!-- End of Main Content -->
+
+                        <!-- Footer -->
+                        <%- include('../admin/partials/adminFooter'); %>
+                            <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <%- include('../admin/partials/modallogout'); %>
+                <!-- Bootstrap core JavaScript-->
+                <script src="/vendor/jquery/jquery.min.js"></script>
+                <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <script src="/js/bootstrap4-toggle.min.js"></script>
+
+                <!-- Core plugin JavaScript-->
+                <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                <!-- Custom scripts for all pages-->
+                <script src="/js/sb-admin-2.js"></script>
+                <script src="/js/jquery.MultiLanguage.js"></script>
+                <script src="/admin/js/jquery.system-setting.js"></script>
+                <script src="/js/bootstrap-show-notification.js"></script>
+
+</body>
+
+</html>

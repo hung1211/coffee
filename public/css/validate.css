@@ -1,0 +1,13 @@
+
+label.error.fail-alert {
+    
+    line-height: 1;
+    padding: 2px 0 6px 6px;
+    background: #ffe6eb;
+    font-size: 1rem;
+    width: 100%;
+    }
+    input.valid.success-alert {
+    border: 2px solid #4CAF50;
+    color: green;
+    }

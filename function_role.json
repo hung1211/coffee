@@ -1,0 +1,30 @@
+[
+    {
+        "link": "product",
+        "name": "Sản Phẩm"
+    },
+    {
+        "link": "table-area",
+        "name": "Bàn - Khu Vực"
+    },
+    {
+        "link": "order",
+        "name": "Quản lý bán hàng"
+    },
+    {
+        "link": "revenue",
+        "name": "Quản lý Doanh Thu"
+    },
+    {
+        "link": "user",
+        "name": "Quản lý người dùng"
+    },
+    {
+        "link": "role",
+        "name": "Phân Quyền"
+    },
+    {
+        "link": "system",
+        "name": "Cấu hình hệ thống"
+    }
+]

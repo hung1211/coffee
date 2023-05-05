@@ -1,0 +1,19 @@
+{
+    "head": {
+        "title": "Coffee Management"
+    },
+    "body": {
+        "registerTitle": "Create an Account!",
+        "lname": "Last Name",
+        "fname": "First Name",
+        "email": "Email",
+        "pass": "Password",
+        "repass": "Repeat password",
+        "register": "Sign Up",
+        "alredyAccount": "Already have an account? Login!",
+        "area": "Area",
+        "table": "Table",
+        "product-list": "Product List",
+        "product-list-des": "All product in shop, click product name to show details"
+    }
+}

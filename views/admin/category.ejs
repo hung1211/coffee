@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Coffee Management - <span key="title">Categories</span></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/jquery.imagesloader.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include('../admin/partials/adminHeader', {menu:menu}); %>
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include('../admin/partials/topbar'); %>
+
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-1 text-gray-800">Categories</h1>
+
+                            <!-- Content Row -->
+                            <div class="row" id="divCatList">
+                            </div>
+                            <div class="row">
+                                <button id="btnAdd" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Add Category</span>
+                                    </a>
+                            </div>
+
+                        </div>
+                        <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <%- include('../admin/partials/adminFooter'); %>
+                    <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <div id="categoryModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Category</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Category Name:</label>
+                        <input type="text" class="form-control" data-id="" id="categoryName" name="categoryName">
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea class="form-control" data-id="" id="categoryDes" name="categoryDes"></textarea>
+                    </div>
+                    <div class="form-group" id="catImageArea">
+                        
+                    </div>
+                    <div class="form-group">
+                        <div class=" d-flex align-items-center">
+                            <label clas="col-sm-2">Discount:</label>
+                            <div class="col-sm-4 input-group mb-3">
+                                <input type="text" id="categoryDiscount" class="form-control" value="0"
+                                    aria-label="Amount (to the nearest dollar)" maxlength="2"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-percent"
+                                            aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="addCategory()">OK</button>
+                    <button type="button" class="btn btn-danger" id="btnDeleteCategory"
+                        onclick="deleteCategory()">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../admin/partials/modallogout'); %>
+        <script id="productItem-template" type="x-tmpl-mustache">
+        <div class="card mw-50 mb-4 py-3 mr-3 border-bottom-primary">
+            <div class="card-body">
+                <button class="border-0 bg-transparent" onclick="categoryDetails({{ID}})">
+                    <div class="text-lg font-weight-bold text-primary text-uppercase mb-1">{{CategoryName}}</div>
+                <img style="max-width:200px" class="img-fluid d-block pt-3" src="{{ThumbImage}}"/>
+                </button>
+            </div>
+        </div>
+    </script>
+    <script id="upload-template" type="x-tmpl-mustache" src="template/upload-file.html"></script>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="../js/sb-admin-2.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="../js/jquery.MultiLanguage.js"></script>
+        <script src="../js/jquery.imagesloader-1.0.1.js"></script>
+        <script src="../admin/js/jquery.cat.js"></script>
+
+</body>
+
+</html>

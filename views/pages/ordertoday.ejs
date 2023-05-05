@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title key="title">Coffee Shop</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="css/frontend.style.css" rel="stylesheet">
+    <link href="css/loading.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Coffee - Sale</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index">
+                        <i class="fa fa-list"></i>
+                        Danh Sách Bàn
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="ordertoday">
+                        <i class="fa fa-history">
+                        </i>
+                        Hóa Đơn Hôm nay
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="row" id="orderList">
+            <div class="card shadow mb-4">
+                <div class="card-header">
+                    <h4 class="card-title"></h4>
+                  </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>OrderID</th>
+                                    <th>Bàn</th>
+                                    <th>Giờ vào</th>
+                                    <th>Giờ ra</th>
+                                    <th>Tổng Tiền</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>OrderID</th>
+                                    <th>Bàn</th>
+                                    <th>Giờ vào</th>
+                                    <th>Giờ ra</th>
+                                    <th>Tổng Tiền</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="orderDetailModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="orderDetailModal-title"></h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body row prevent-select">
+              <!--<button class="d-md-block d-lg-none btn btn-success" id="btnShowOrderDetails">Món đã gọi</button>-->
+              <div class="col-lg-12">
+                <div class="row" id="orderDetailModal-list">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Tên món</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thành tiền</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            
+                        </tfoot>
+                      </table>
+                </div>
+              </div>
+              
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-danger float-left" style="width: 100px;" onclick="deleteOrder()">Xóa</button>
+                <div>
+                <button type="button" class="btn btn-primary" style="width: 100px;" onclick="printOrder()">In hóa đơn</button>
+              <button type="button" class="btn btn-primary" style="width: 100px;" data-dismiss="modal">OK</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div id="loadingPage" style="display: none;">
+        <div id="load">
+            <div>G</div>
+            <div>N</div>
+            <div>I</div>
+            <div>D</div>
+            <div>A</div>
+            <div>O</div>
+            <div>L</div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+
+
+    <script src="../js/printThis.js"></script>
+    <script src="../js/mustache.min.js"></script>
+    <script src="../js/frontend.main.js"></script>
+    <script src="../js/frontend.ordertoday.js"></script>
+
+</body>
+
+</html>

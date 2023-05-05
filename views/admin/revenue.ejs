@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title key="title">Coffee Management</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include('../admin/partials/adminHeader', {menu:menu}); %>
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include('../admin/partials/topbar'); %>
+
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-4 text-gray-800">Thống kê doanh thu</h1>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <button class="btn btn-outline-primary" onclick="getOrderThisWeek()"
+                                        id="btnThisWeek">Trong Tuần</button>
+                                    <button class="btn btn-primary" onclick="getOrderThisMonth()"
+                                        id="btnThisMonth">Trong Tháng</button>
+                                    <button class="btn btn-primary" onclick="getOrderThisYear()" id="btnThisYear">Trong
+                                        Năm</button>
+                                    <div class="input-group mb-3 mt-3" style="max-width: 600px;">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Từ ngày</span>
+                                        </div>
+                                        <input type="text" id="inputStartDate" class="form-control">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Đến ngày</span>
+                                        </div>
+                                        <input type="text" id="inputEndDate" class="form-control">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" id="btnLookUpOrderByDate" type="button">Xem</button>
+                                          </div>
+                                    </div>
+                                    <span class="text-light bg-warning d-none" id="errorDate">Ngày nhập vào không đúng định dạng ngày/tháng/năm</span>
+                                    <h6 class="m-0 font-weight-bold text-primary mt-3" key="">Tổng Doanh Thu: <span
+                                            id="spanRevenueToday"></span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" id="dataTable" width="100%"
+                                            cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>OrderID</th>
+                                                    <th>Bàn</th>
+                                                    <th>Ngày</th>
+                                                    <th>Giờ vào</th>
+                                                    <th>Giờ ra</th>
+                                                    <th>Tổng Tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>OrderID</th>
+                                                    <th>Bàn</th>
+                                                    <th>Ngày</th>
+                                                    <th>Giờ vào</th>
+                                                    <th>Giờ ra</th>
+                                                    <th>Tổng Tiền</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.container-fluid -->
+
+                        </div>
+                        <!-- End of Main Content -->
+
+                        <!-- Footer -->
+                        <%- include('../admin/partials/adminFooter'); %>
+                            <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <%- include('../admin/partials/modallogout'); %>
+
+                <div id="orderDetailModal" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="orderDetailModal-title"></h5>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body row prevent-select">
+                                <!--<button class="d-md-block d-lg-none btn btn-success" id="btnShowOrderDetails">Món đã gọi</button>-->
+                                <div class="col-lg-12">
+                                    <div class="row" id="orderDetailModal-list">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Tên món</th>
+                                                    <th scope="col">Đơn giá</th>
+                                                    <th scope="col">Số lượng</th>
+                                                    <th scope="col">Thành tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                            <tfoot>
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary" style="width: 100px;"
+                                    data-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bootstrap core JavaScript-->
+                <script src="/vendor/jquery/jquery.min.js"></script>
+                <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+                <!-- Core plugin JavaScript-->
+                <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+                <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+                <script src="/js/bootstrap-datepicker.min.js"></script>
+
+                <!-- Custom scripts for all pages-->
+                <script src="/js/sb-admin-2.js"></script>
+                <script src="/js/jquery.MultiLanguage.js"></script>
+                <script src="/js/frontend.main.js"></script>
+                <script src="/admin/js/jquery.revenue.js"></script>
+
+</body>
+
+</html>

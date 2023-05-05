@@ -1,0 +1,10 @@
+SELECT
+    p.ProductID AS prod_id,
+    p.ProductName AS prod_name,
+    sum(od.Quantity) AS quantity_sold
+FROM tb_product p
+    LEFT JOIN (tb_orderdetails AS od 
+    INNER JOIN (SELECT * FROM tb_order WHERE MONTH(CreateTime) = MONTH(CURRENT_DATE()) AND YEAR(CreateTime) = YEAR(CURRENT_DATE()) AND IsDeleted = 0) AS o ON od.OrderID  = o.OrderID)
+    ON p.ProductID = od.ProductID
+GROUP BY p.ProductID, p.ProductName,od.Price
+ORDER BY p.ProductName;

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <header>
+        <div id="logo" class="media" data-src="logo.png" src="./logo.png"></div>
+
+    </header>
+    <p>Hóa đơn số : 4910487129047124</p>
+    <table class="bill-details">
+        <tbody>
+            <tr>
+                <td>Bàn: <span>{{TableName}}</span></td>
+                <td>Giờ vào: <span>{{CreateTime}}</span></td>
+            </tr>
+            <tr>
+                <td>Ngày: <span>{{CreateDate}}</span></td>
+                <td>Giờ ra: <span>{{LeaveTime}}</span></td>
+            </tr>
+            <tr>
+                <th class="center-align" colspan="2"><span class="receipt">Hóa Đơn Thanh Toán</span></th>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table class="items">
+        <thead>
+            <tr>
+                <th class="heading name">Món</th>
+                <th class="heading qty">Số Lượng</th>
+                <th class="heading rate">Đơn giá</th>
+                <th class="heading amount">Thành Tiền</th>
+            </tr>
+        </thead>
+       
+        <tbody>
+            {{#productList}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{qty}}</td>
+                <td class="price">{{price}}</td>
+                <td class="price">{{calPrice}}</td>
+            </tr>
+            {{/productList}}
+            <tr>
+                <td colspan="3" class="sum-up line">Tổng tiền</td>
+                <td class="line price">{{TotalPrice}}</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="sum-up">VAT</td>
+                <td class="price">0</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="sum-up">Số tiền phải thanh toán</td>
+                <td class="price">{{TotalPrice}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <section>
+        <p>
+            Nhân viên : <span>Cashier</span>
+        </p>
+        <p style="text-align:center">
+            Cảm ơn bạn đã ghé
+        </p>
+    </section>
+    <footer style="text-align:center">
+        <p>Sunny Coffee</p>
+        <p>Website</p>
+    </footer>
+</body>
+
+</html>

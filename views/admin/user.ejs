@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title key="title">Coffee Management - User</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/validate.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include('../admin/partials/adminHeader', {menu:menu}); %>
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include('../admin/partials/topbar'); %>
+
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-4 text-gray-800" id="page-title">Thêm Nhân Viên</h1>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <input type="text" class="form-control" id="userID" value="<%=idRender%>" style="display: none;" disabled>
+                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Tên" required>
+                                </div>
+                                <div class="row mb-3">
+                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Họ" required>
+                                </div>
+                                <div class="row mb-3">
+                                    <input type="text" class="form-control" id="user-email" name="email" required
+                                        placeholder="Email của nhân viên">
+                                </div>
+                                <div class="row input-group mb-3 w-auto">
+                                    <input type="password" class="form-control" id="user-pass" name="password" required
+                                    placeholder="Mật khẩu">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-success" type="button" id="btnGenPass">Tạo Ngẫu Nhiên</button>
+                                    </div>
+                                  </div>
+                                <div class="row mb-3">
+                                    <input type="password" class="form-control" name="re-password" id="user-repass" required
+                                        placeholder="Nhập lại mật khẩu">
+                                </div>
+                                <div class="row mb-3">
+                                    <input type="checkbox" class="ml-3" onclick="showPassword()"> <span class="ml-3">Hiển thị mật khẩu</span>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <select class="form-control" id="userrole">
+                                        <option value="0">Phân Quyền</option>
+                                    </select>
+                                </div>
+
+
+                            <div class="row mb-3">
+                                <button class="btn btn-primary" id="btnAdd" onclick="updateUser()">Thêm</button>
+                                <button class="btn btn-danger ml-auto" style="display: none;" id="btnDelete" onclick="deleteUser()">Delete User</button>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <%- include('../admin/partials/adminFooter'); %>
+                    <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <%- include('../admin/partials/modallogout'); %>
+    
+    <div id="cofirmAdd-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm Nhân Viên Thành Công</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h5>Tiếp theo</h5>
+                    <a href="/admin/users" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-th-list"></i>
+                        </span>
+                        <span class="text">Đi đến trang Danh Sách Nhân Viên</span>
+                    </a>
+                    <a href="/admin/user/add" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Thêm Nhân Viên</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/js/mustache.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="/js/sb-admin-2.js"></script>
+        <script src="/js/jquery.MultiLanguage.js"></script>
+        <script src="/admin/js/jquery.user.js"></script>
+        <script src="/js/jquery.validate.js"></script>
+        <script src="/js/bootstrap-show-notification.js"></script>
+
+</body>
+
+</html>

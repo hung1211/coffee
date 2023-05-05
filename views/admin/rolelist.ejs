@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title key="title">Coffee Management - Role</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+    <style>
+        tr.selected{
+            background-color: #6c6e7e;
+            color: aliceblue;
+        }
+    </style>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include('../admin/partials/adminHeader', {menu:menu}); %>
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include('../admin/partials/topbar'); %>
+
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-4 text-gray-800">Role List</h1>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary" key="role-list-des"></h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="col-md-4">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered display" id="roleTable" width="100%"
+                                                cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card mt-5" style="display: none;" id="role-page-access" data-id="">
+                                            <div class="card-header py-3">
+                                                <h6 class="m-0 font-weight-bold text-primary" key=""></h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="Nhập tên cho phân quyền" id="inputRoleName" disabled aria-label="Nhập tên cho phân quyền" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                      <button class="btn btn-outline-primary" onclick="changeRoleName()" type="button">Thay đổi</button>
+                                                    </div>
+                                                  </div>
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <td>Quyền truy cập</td>
+                                                        <td>Xem</td>
+                                                        <td>Sửa</td>
+                                                        <td>Xóa</td>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="btnAdd" class="btn btn-primary">New Role</button>
+                                </div>
+                            </div>
+                            <!-- /.container-fluid -->
+
+                        </div>
+                        <!-- End of Main Content -->
+
+                        <!-- Footer -->
+                        <%- include('../admin/partials/adminFooter'); %>
+                            <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+            <div id="roleModal" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Role</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Role Name:</label>
+                                <input type="text" class="form-control" data-id="" id="roleName" name="roleName">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="addRole()">OK</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('../admin/partials/modallogout'); %>
+            <script id="role-page-template" type="x-tmpl-mustache">
+                <%pagelist.forEach(item=> {%>
+                    <tr>
+                        <td class="text-capitalize">
+                            <%=item.name%>
+                        </td>
+                        <td><input class="changePageRole" data-toggle="toggle" data-size="xs" data-link="<%=item.link%>" data-action="viewrole" data-width="50" type="checkbox"></td>
+                        <td><input class="changePageRole" data-toggle="toggle" data-size="xs" data-link="<%=item.link%>" data-action="editrole" data-width="50" type="checkbox"></td>
+                        <td><input class="changePageRole" data-toggle="toggle" data-size="xs" data-link="<%=item.link%>" data-action="deleterole" data-width="50" type="checkbox"></td>
+                    </tr>
+                <%})%>
+              </script>
+                <!-- Bootstrap core JavaScript-->
+                <script src="/vendor/jquery/jquery.min.js"></script>
+                <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <script src="/js/bootstrap4-toggle.min.js"></script>
+                <script src="/js/mustache.min.js"></script>
+
+                <!-- Core plugin JavaScript-->
+                <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+                <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+                <!-- Custom scripts for all pages-->
+                <script src="/js/sb-admin-2.js"></script>
+                <script src="/js/jquery.MultiLanguage.js"></script>
+                <script src="/admin/js/jquery.rolelist.js"></script>
+                <script src="/js/bootstrap-show-notification.js"></script>
+
+</body>
+
+</html>
